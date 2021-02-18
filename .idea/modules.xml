@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Laborator1PA/BonusExercise/BonusExercise.iml" filepath="$PROJECT_DIR$/Laborator1PA/BonusExercise/BonusExercise.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Laborator1PA/CompulsoryExercise/CompulsoryExercise.iml" filepath="$PROJECT_DIR$/Laborator1PA/CompulsoryExercise/CompulsoryExercise.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/LaboratorPA.iml" filepath="$PROJECT_DIR$/.idea/LaboratorPA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Laborator1PA/OptionalExercise/OptionalExercise.iml" filepath="$PROJECT_DIR$/Laborator1PA/OptionalExercise/OptionalExercise.iml" />
+    </modules>
+  </component>
+</project>
