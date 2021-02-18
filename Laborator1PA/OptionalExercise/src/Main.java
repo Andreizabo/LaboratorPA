@@ -1,4 +1,75 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.function.Consumer;
+
 public class Main {
+
+    public static class myDeque<T> {
+        private final ArrayList<T> elements;
+
+        public myDeque(ArrayList<T> elements) {
+            this.elements = elements;
+        }
+
+        public myDeque() {
+            this.elements = new ArrayList<>();
+        }
+
+        public void clear() {
+            this.elements.clear();
+        }
+
+        public boolean isEmpty() {
+            return this.elements.isEmpty();
+        }
+
+        public boolean pushTop(T t) {
+            return this.elements.add(t);
+        }
+
+        public void pushBottom(T t) {
+            this.elements.add(0, t);
+        }
+
+        public T top() {
+            if(elements.size() < 1) {
+                return null;
+            }
+            return this.elements.get(elements.size() - 1);
+        }
+
+        public T bottom() {
+            if(elements.size() < 1) {
+                return null;
+            }
+            return this.elements.get(0);
+        }
+
+        public boolean popTop() {
+            if(elements.size() < 1) {
+                return false;
+            }
+            this.elements.remove(elements.size() - 1);
+            return true;
+        }
+
+        public boolean popBottom() {
+            if(elements.size() < 1) {
+                return false;
+            }
+            this.elements.remove(0);
+            return true;
+        }
+
+        public Iterator<T> getIterator() {
+            return this.elements.iterator();
+        }
+
+        public void forEach(Consumer<?super T> action) {
+            this.elements.forEach(action);
+        }
+    }
 
     public static boolean printMatrices = true;
 
@@ -33,19 +104,20 @@ public class Main {
                 matrix[j][i] = matrix[i][j];
             }
         }
-        printMatrix(matrix, n);
-        boolean connected = isConnected(matrix, n);
+        printMatrix(matrix);
+        boolean connected = isConnected(matrix);
 
         if(connected) {
-            makeTree(matrix, n);
+            makeTree(matrix);
         }
         showTime(startTime);
     }
 
-    public static void printMatrix(int[][] matrix, int n) {
+    public static void printMatrix(int[][] matrix) {
         if(!printMatrices) {
             return;
         }
+        int n = matrix.length;
         //int numberOfLines = n * 2 + (5 + ((n - 5) / 2)); //Unicode characters are printed as "?"
         int numberOfLines = n * 2 + 3;
         for(int i = 0; i < numberOfLines; ++i) {
@@ -71,17 +143,18 @@ public class Main {
         System.out.print("\n");
     }
 
-    public static boolean isConnected(int[][] matrix, int n) {
+    public static boolean isConnected(int[][] matrix) {
+        int n = matrix.length;
         int[] indexed = new int[n];
         int k = 1;
         for(int i = 0; i < n; ++i) {
             indexed[i] = 0;
         }
-        dfs(matrix, n, 0, k, indexed);
+        dfs(matrix, 0, k, indexed);
         for(int i = 0; i < n; ++i) {
             if(indexed[i] != 1) {
                 ++k;
-                dfs(matrix, n, i, k, indexed);
+                dfs(matrix, i, k, indexed);
             }
         }
         if(k == 1) {
@@ -105,38 +178,44 @@ public class Main {
         }
     }
 
-    public static void dfs(int[][] matrix, int n, int node, int k, int[] indexed) {
+    public static void dfs(int[][] matrix, int node, int k, int[] indexed) {
+        int n = matrix.length;
         indexed[node] = k;
         for(int i = 0; i < n; ++i) {
             if(i != node && indexed[i] == 0 && matrix[i][node] == 1) {
-                dfs(matrix, n, i, k, indexed);
+                dfs(matrix, i, k, indexed);
             }
         }
     }
 
-    public static void makeTree(int[][] matrix, int n) {
+    public static void makeTree(int[][] matrix) {
+        int n = matrix.length;
         int[][] treeMatrix = new int[n][n];
-        int[] indexed = new int[n];
-        for(int i = 0; i < n; ++i) {
-            for(int j = 0; j < n; ++j) {
-                treeMatrix[i][j] = 0;
+
+        boolean[] visited = new boolean[matrix.length];
+        Arrays.fill(visited, false);
+
+        myDeque<Integer> deque = new myDeque<>();
+        deque.pushTop(0);
+        visited[0] = true;
+
+        while(!deque.isEmpty()) {
+            int node = deque.bottom();
+            deque.popBottom();
+
+            for(int i = 0; i < n; ++i) {
+                if(!visited[i] && matrix[node][i] == 1) {
+                    visited[i] = true;
+                    treeMatrix[node][i] = 1;
+                    treeMatrix[i][node] = 1;
+                    deque.pushTop(i);
+                }
             }
-            indexed[i] = 0;
         }
-        tree(matrix, n, 0, indexed, treeMatrix);
-        printMatrix(treeMatrix, n);
+
+        printMatrix(treeMatrix);
     }
 
-    public static void tree(int[][] matrix, int n, int node, int[] indexed, int[][] treeMatrix) {
-        indexed[node] = 1;
-        for(int i = 0; i < n; ++i) {
-            if(i != node && indexed[i] == 0 && matrix[i][node] == 1) {
-                treeMatrix[i][node] = 1;
-                treeMatrix[node][i] = 1;
-                tree(matrix, n, i, indexed, treeMatrix);
-            }
-        }
-    }
 
     public static void showTime(long startTime) {
         long endTime = System.nanoTime();
