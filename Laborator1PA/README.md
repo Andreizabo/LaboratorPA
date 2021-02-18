@@ -14,9 +14,11 @@ If the given integer is greater than 9, the matrix printing will be disabled.
 A random matrix for the graph is generated, with the dimensions equal to the given integer, and then it is printed.  
 The program verifies whether the graph is connected and shows a proper response. If it is connected we create a partial tree from the generated graph applying a BFS-like algorithm, and then we show the corresponding matrix.  
 In the end the running time is shown.  
+This program must be ran with the "-Xss32M" argument for large number of nodes.  
   
 ---Bonus:  
   
 Firstly I read an integer representing the number of nodes.  
 A BFS-like algorithm is applied, instead of adding a node to the deque when it is connected to the current node we add it with a certain decreasing chance and connect it to the current node.  
 In order to create the output described in the exercise I apply a DFS-like algorithm, printing for each node the nodes it is connected to, starting with the root.  
+The number of nodes must be given as parameter when running the program.
