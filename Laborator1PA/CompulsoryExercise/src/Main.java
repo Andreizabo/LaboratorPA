@@ -6,7 +6,7 @@ public class Main {
         String[] languages = {"C", "C++", "C#", "Python", "Go", "Rust", "JavaScript", "PHP", "Swift", "Java"};
         int n = (int) (Math.random() * 1_000_000);
         int result = addDigits(transform(n));
-        System.out.printf("Willy-nilly, this semester I will learn %d languages", result);
+        System.out.printf("Willy-nilly, this semester I will learn %s", languages[result]);
     }
 
     public static int transform(int x) {
