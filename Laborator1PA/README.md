@@ -1,4 +1,5 @@
-Note: I am still working on Optional, implementing BFS for tree generation.
+Note: I am still working on Optional, implementing BFS for tree generation.  
+  
 ---Compulsory:  
   
 I used two functions besides the Main function:  
