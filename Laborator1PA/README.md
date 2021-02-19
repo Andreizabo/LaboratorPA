@@ -24,5 +24,5 @@ In order to create the output described in the exercise I apply a DFS-like algor
 The number of nodes must be given as parameter when running the program.  
   
 The "connectionModifier" constant will have the following effects on the final tree:  
-&nbsp;&nbsp;- A tree with a greater breadth than depth, when the constant is lower (connectionModifier <= 40)
+&nbsp;&nbsp;- A tree with a greater breadth than depth, when the constant is lower (connectionModifier <= 40)  
 &nbsp;&nbsp;- A tree with a greater depth than breadth, when the constant is higher (connectionModifier > 40)
