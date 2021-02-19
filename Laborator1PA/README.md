@@ -21,4 +21,8 @@ This program must be ran with the "-Xss32M" argument for large number of nodes.
 Firstly I read an integer representing the number of nodes.  
 A BFS-like algorithm is applied, instead of adding a node to the deque when it is connected to the current node we add it with a certain decreasing chance and connect it to the current node.  
 In order to create the output described in the exercise I apply a DFS-like algorithm, printing for each node the nodes it is connected to, starting with the root.  
-The number of nodes must be given as parameter when running the program.
+The number of nodes must be given as parameter when running the program.  
+  
+The "connectionModifier" constant will have the following effects on the final tree:  
+&nbsp;&nbsp;- A tree with a greater breadth than depth, when the constant is lower (connectionModifier <= 40)
+&nbsp;&nbsp;- A tree with a greater depth than breadth, when the constant is higher (connectionModifier > 40)
