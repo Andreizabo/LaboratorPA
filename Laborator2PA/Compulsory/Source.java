@@ -1,7 +1,7 @@
 public class Source {
-    public String name;
-    public int supply;
-    public SourceType type;
+    private String name;
+    private int supply;
+    private SourceType type;
 
     public Source(String name, int supply, SourceType type) { //The only available constructor, name, supply and type must be provided
         this.name = name;

@@ -1,6 +1,6 @@
 public class Destination {
-    public String name;
-    public int demand;
+    private String name;
+    private int demand;
 
     public Destination(String name, int demand) { //The only available constructor, name and demand must be provided
         this.name = name;

@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 
 public class Problem {
-    public Source[] sources;
-    public Destination[] destinations;
-    public int[][] cost;
+    private Source[] sources;
+    private Destination[] destinations;
+    private int[][] cost;
 
     public Problem(Source[] sources, Destination[] destinations, int[][] cost) { //The constructor used for a custom problem
         //Firstly the array lengths are verified
@@ -73,5 +73,33 @@ public class Problem {
             }
             System.out.print("\n");
         }
+    }
+
+    public Source getSource(int index) {
+        if(index < 0 || index >= sources.length) {
+            return null;
+        }
+        return sources[index];
+    }
+
+    public void setSource(Source source, int index) {
+        if(index < 0 || index >= sources.length) {
+            return;
+        }
+        sources[index] = source;
+    }
+
+    public Destination getDestination(int index) {
+        if(index < 0 || index >= destinations.length) {
+            return null;
+        }
+        return destinations[index];
+    }
+
+    public void setDestination(Destination destination, int index) {
+        if(index < 0 || index >= destinations.length) {
+            return;
+        }
+        destinations[index] = destination;
     }
 }
