@@ -24,27 +24,17 @@ public class Problem {
     }
 
     public Problem() { //The constructor for the default problem (The example from the lab)
-        this.sources = new Source[3];
-        this.destinations = new Destination[3];
-        this.cost = new int[3][3];
-
-        sources[0] = new Source("S1", 10, SourceType.FACTORY);
-        sources[1] = new Source("S2", 35, SourceType.WAREHOUSE);
-        sources[2] = new Source("S3", 25, SourceType.WAREHOUSE);
-
-        destinations[0] = new Destination("D1", 20);
-        destinations[1] = new Destination("D2", 25);
-        destinations[2] = new Destination("D3", 25);
-
-        cost[0][0] = 2;
-        cost[0][1] = 3;
-        cost[0][2] = 1;
-        cost[1][0] = 5;
-        cost[1][1] = 4;
-        cost[1][2] = 8;
-        cost[2][0] = 5;
-        cost[2][1] = 6;
-        cost[2][2] = 8;
+        this.sources = new Source[] {
+                new Source("S1", 10, SourceType.FACTORY),
+                new Source("S2", 35, SourceType.WAREHOUSE),
+                new Source("S3", 25, SourceType.WAREHOUSE)
+        };
+        this.destinations = new Destination[] {
+                new Destination("D1", 20),
+                new Destination("D2", 25),
+                new Destination("D3", 25)
+        };
+        this.cost = new int[][] {{2, 3, 1}, {5, 4, 8}, {5, 6, 8}};
     }
 
     public void solve() {} //To be implemented in Bonus
@@ -75,11 +65,30 @@ public class Problem {
 
     @Override
     public String toString() {
-        return "Problem{" +
-                "sources=" + Arrays.toString(sources) +
-                ", destinations=" + Arrays.toString(destinations) +
-                ", cost=" + Arrays.toString(cost) +
-                '}';
+        StringBuilder string = new StringBuilder("Problem {\n\tsources = [\n\t");
+        for(int i = 0; i < sources.length; ++i) {
+            string.append('\t').append(sources[i].toString()).append("\n\t");
+        }
+        string.append("]\n\tdestinations = [\n\t");
+        for(int i = 0; i < destinations.length; ++i) {
+            string.append('\t').append(destinations[i].toString()).append("\n\t");
+        }
+        string.append("]\n\tcosts = [\n\t");
+        for(int i = 0; i < cost.length; ++i) {
+            string.append("\t[ ");
+            for(int j = 0; j < cost[i].length; ++j) {
+                string.append(cost[i][j]);
+                if(j == cost[i].length - 1) {
+                    string.append(" ]");
+                }
+                else {
+                    string.append(", ");
+                }
+            }
+            string.append("\n\t");
+        }
+        string.append("]\n}");
+        return string.toString();
     }
 
     public Source getSource(int index) {
