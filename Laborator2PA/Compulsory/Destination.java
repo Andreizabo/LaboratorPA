@@ -32,6 +32,6 @@ public class Destination {
     }
 
     public void printInfo() { //Prints all the information about the destination
-        System.out.print("Source " + this.name + " and has a demand of " + this.demand + ".\n");
+        System.out.print("Destination " + this.name + " and has a demand of " + this.demand + ".\n");
     }
 }
