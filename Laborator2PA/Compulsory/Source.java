@@ -34,8 +34,12 @@ public class Source {
     }
 
     @Override
-    public String toString() { //toString returns the name of the source
-        return this.name;
+    public String toString() {
+        return "Source{" +
+                "name='" + name + '\'' +
+                ", supply=" + supply +
+                ", type=" + type +
+                '}';
     }
 
     public void printInfo() { //Prints all the information about the source

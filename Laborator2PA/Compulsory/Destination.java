@@ -24,8 +24,11 @@ public class Destination {
     }
 
     @Override
-    public String toString() { //toString will return the name of the destination
-        return this.name;
+    public String toString() {
+        return "Destination{" +
+                "name='" + name + '\'' +
+                ", demand=" + demand +
+                '}';
     }
 
     public void printInfo() { //Prints all the information about the destination
