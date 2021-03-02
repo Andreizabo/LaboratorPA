@@ -11,12 +11,12 @@ We ran the profiler under the following circumstances:
 Using JProfiler, the following results were obtained:
 
 ## Telemetries
-![Telemetries](/profiler-images/telemetries.png)
+![Telemetries](profiler-images/telemetries.png)
 
 Nothing out of the ordinary, more and more memory was allocated and the CPU load kept rising until the very end.  
 
 ## Allocation Call Tree
-![Allocation Call Tree](/profiler-images/alloc-tree.png)
+![Allocation Call Tree](profiler-images/alloc-tree.png)
 
 Here we can see that the majority of allocations are done in `Vogel.getDifferenceLine()` and `Vogel.getDifferenceColumn()`.
 
@@ -51,11 +51,11 @@ private int getDifferenceColumn(int index) {
 `Arrays.sort()`, which is called in both methods, is the main cause of this discrepancy between how much allocation is happening in one of Vogel's methods and the rest of the program.
 
 ## Allocation Hot Spots
-![Allocation Hot Spots](/profiler-images/hot-spot.png)
+![Allocation Hot Spots](profiler-images/hot-spot.png)
 
 Just as before, the two methods from `Vogel.calculatePenalty()` are the hot spots of memory allocation, because of their `Arrays.sort` method.
 
 ## Call Tree
-![Call Tree](/profiler-images/call-tree.png)
+![Call Tree](profiler-images/call-tree.png)
 
 As expected, the CPU spends most of its resources on `Arrays.sort()` calls.
