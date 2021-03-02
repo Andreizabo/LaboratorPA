@@ -59,3 +59,27 @@ Just as before, the two methods from `Vogel.calculatePenalty()` are the hot spot
 ![Call Tree](profiler-images/call-tree.png)
 
 As expected, the CPU spends most of its resources on `Arrays.sort()` calls.
+
+# After optimizing the code  
+  
+Since `Arrays.sort()` is unnecessarily heavy on both the memory and the CPU, the obvious optimization is to replace it with something more light. After doing so, here are the results on a similar instance: 
+
+## Telemetries
+![Telemetries](profiler-images/telemetries-first.png)
+
+There were a decreasing amount of threads used, as compared to the initial setup.  
+
+## Allocation Call Tree
+![Allocation Call Tree](profiler-images/call-tree-first.png)
+
+`Vogel.calculatePenalty()` now only represents 77% of the allocations, whereas, before the optimization, it represented a whopping 92%. A slight increase in performance, but this method still dwarfs the rest of them because we allocate a vector with each call of `Vogel.getDifferenceLine()` and `Vogel.getDifferenceColumn()`.
+
+## Allocation Hot Spots
+![Allocation Hot Spots](profiler-images/hot-spot-first.png)
+
+The two aforementioned methods still are the greatest hot spots.
+
+## Call Tree
+![Call Tree](profiler-images/cpu-first.png)
+
+Here we see the greatest improvement. From a 68% CPU usage coming from `Vogel.calculatePenalty()` (mainly from the `Arrays.sort()` calls), we are now down to almost nothing. The most CPU-heavy operation happening is the `Arrays.sort()` call from the Greedy Algorithm, `Vogel.solve()` now only representing a bit over 5% of the total CPU usage (from the `String.split()` method calls and others).
