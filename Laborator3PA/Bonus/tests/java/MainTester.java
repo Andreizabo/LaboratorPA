@@ -1,6 +1,7 @@
-import org.junit.Test;
+import org.junit.*;
 
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class MainTester {
     @Test
@@ -13,7 +14,12 @@ public class MainTester {
         city.addLocation(new Church("Church B", LocalTime.of(8, 0), LocalTime.of(22, 0)));
         city.addLocation(new Restaurant("Restaurant A", LocalTime.of(8, 0), LocalTime.of(22, 0), 3.1f, 50));
 
-        //Assertions.assertEquals(city.getLocations().size(), 6); // It doesn't work, I can't import org.junit.jupiter.api.Assertions;
+        Assert.assertEquals(6, city.getLocations().size());
+
+        TravelPlan travelPlan = new TravelPlan(city, new ArrayList<>(city.getLocations()), 5, 100);
+        ShortestPathResult shortestPath = travelPlan.shortestPath(city.getLocation(4), city.getLocation(5));
+
+        Assert.assertEquals(20.0, shortestPath.getCost());
     }
 
 }
