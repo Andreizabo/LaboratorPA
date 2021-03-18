@@ -1,0 +1,5 @@
+
+Image{name='Harta Romaniei', path='images\ro.png', widthPx=1024.0, heightPx=1024.0}
+Movie{name='Cat dancing', path='movies\cat.mp4', director='Unknown', releaseDate=2021-03-18, runningTime=69.0}
+Book{name='I Like Java', path='books\likeJava.txt', author='Me', salesNumber=3}
+CatalogItem{name='My script', path='others\myScript.bat'}
