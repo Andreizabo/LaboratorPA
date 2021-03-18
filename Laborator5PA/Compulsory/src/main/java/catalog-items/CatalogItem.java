@@ -1,6 +1,6 @@
 import java.io.File;
 
-public class CatalogItem {
+public abstract class CatalogItem {
     protected String name;
     protected String path;
 
@@ -39,14 +39,5 @@ public class CatalogItem {
             throw new MyException(name + " is a directory.");
         }
         this.path = path;
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder sb = new StringBuilder("CatalogItem{");
-        sb.append("name='").append(name).append('\'');
-        sb.append(", path='").append(path).append('\'');
-        sb.append('}');
-        return sb.toString();
     }
 }

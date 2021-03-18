@@ -10,10 +10,30 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Catalog {
+    private String name;
+    private String path;
     private List<CatalogItem> items;
 
-    public Catalog(List<CatalogItem> items) {
+    public Catalog(String name, String path, List<CatalogItem> items) {
+        this.name = name;
+        this.path = path;
         this.items = items;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 
     public void setCatalogItem(int index, CatalogItem catalogItem) {
@@ -33,6 +53,10 @@ public class Catalog {
             System.err.print(e.getMessage() + "\n");
             return null;
         }
+    }
+
+    public CatalogItem getCatalogItem(String name) {
+        return items.stream().filter((item) -> item.getName().equals(name)).findFirst().orElse(null);
     }
 
     public List<CatalogItem> getItems() {
@@ -74,109 +98,6 @@ public class Catalog {
         }
         catch (IOException | NullPointerException e) {
             System.err.print(e.getMessage() + "\n");
-        }
-    }
-
-    public void save() {
-        try {
-            String fileContent = packData();
-            BufferedWriter writer;
-            int index = 0;
-            File checkFile = new File("saved-catalogues\\catalog" + index + ".myctg");
-            while (checkFile.exists() || checkFile.isDirectory()) {
-                ++index;
-                checkFile = new File("saved-catalogues\\catalog" + index + ".myctg");
-            }
-            if (checkFile.createNewFile()) {
-                System.out.print("Created save file for current catalog\n");
-            } else {
-                System.out.print("Could not create save file for current catalog\n");
-                return;
-            }
-            Path test = Path.of("saved-catalogues", "catalog" + index + ".myctg");
-            writer = Files.newBufferedWriter(test, Charset.defaultCharset());
-            writer.write(fileContent);
-            writer.close();
-            System.out.print("Successfully saved current catalog\n");
-        }
-        catch (IOException e) {
-            System.err.print("Catalog not saved, exception: ");
-            System.err.print(e.getMessage() + "\n");
-        }
-    }
-
-    public void load(String name) throws MyException {
-        try {
-            if(!name.startsWith("catalog")) {
-                throw new MyException(name + " is a bad file name. Must start with \"catalog\" and be followed by an integer");
-            }
-            items = new ArrayList<>();
-            if (!name.endsWith(".myctg")) {
-                name += ".myctg";
-            }
-            File file = new File("saved-catalogues\\" + name);
-            BufferedReader br = new BufferedReader(new FileReader(file));
-
-            String line = br.readLine();
-
-            while ((line = br.readLine()) != null) {
-                line = line.substring(0, line.length() - 1);
-                String[] splat = line.split("\\{");
-                String[] attributes = splat[1].split(",");
-                switch (splat[0]) {
-                    case "CatalogItem":
-                        items.add(new CatalogItem((String) parseAttribute(attributes[0]), (String) parseAttribute(attributes[1])));
-                        break;
-                    case "Book":
-                        items.add(new Book((String) parseAttribute(attributes[0]), (String) parseAttribute(attributes[1]), (String) parseAttribute(attributes[2]), (Integer) parseAttribute(attributes[3])));
-                        break;
-                    case "Image":
-                        items.add(new Image((String) parseAttribute(attributes[0]), (String) parseAttribute(attributes[1]), (Double) parseAttribute(attributes[2]), (Double) parseAttribute(attributes[3])));
-                        break;
-                    case "Movie":
-                        items.add(new Movie((String) parseAttribute(attributes[0]), (String) parseAttribute(attributes[1]), (String) parseAttribute(attributes[2]), (LocalDate) parseAttribute(attributes[3]), (Double) parseAttribute(attributes[4])));
-                        break;
-                    case "Song":
-                        items.add(new Song((String) parseAttribute(attributes[0]), (String) parseAttribute(attributes[1]), (String) parseAttribute(attributes[2]), (LocalDate) parseAttribute(attributes[3]), (Double) parseAttribute(attributes[4])));
-                        break;
-                }
-            }
-            br.close();
-        }
-        catch (IOException | NullPointerException e) {
-            System.err.print("Catalog not loaded, exception: ");
-            System.err.print(e.getMessage() + "\n");
-        }
-    }
-
-    private String packData() {
-        StringBuilder sb = new StringBuilder();
-        items.forEach((item) -> sb.append("\n").append(item));
-        return sb.toString();
-    }
-
-    private Object parseAttribute(String string) {
-        String attribute = string.split("=")[0].trim();
-        String value = string.split("=")[1].replace("'", "").trim();
-
-        switch (attribute) {
-            case "name":
-            case "path":
-            case "author":
-            case "director":
-            case "singer":
-                return value;
-            case "salesNumber":
-                return Integer.parseInt(value);
-            case "widthPx":
-            case "heightPx":
-            case "runningTime":
-            case "duration":
-                return Double.parseDouble(value);
-            case "releaseDate":
-                return LocalDate.parse(value);
-            default:
-                return null;
         }
     }
 }

@@ -5,16 +5,15 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         try {
-            Catalog catalog = new Catalog(new ArrayList<>());
+            Catalog catalog = new Catalog("Random items", "saved-catalogues/", new ArrayList<>());
             catalog.add(new Image("Harta Romaniei", "images\\ro.png", 1024.0, 1024.0));
             catalog.add(new Movie("Cat dancing", "movies\\cat.mp4", "Unknown", LocalDate.now(), 69.0));
             catalog.add(new Book("I Like Java", "books\\likeJava.txt", "Me", 3));
-            catalog.add(new CatalogItem("My script", "others\\myScript.bat"));
+            catalog.add(new Other("My script", "others\\myScript.bat"));
 
-            catalog.save();
+            CatalogUtils.save(catalog, true);
 
-            Catalog catalog2 = new Catalog(new ArrayList<>());
-            catalog2.load("catalog0");
+            Catalog catalog2 = CatalogUtils.load("saved-catalogues/Random items.myctg");
             catalog.list("\n", "\n");
             catalog2.list("\n", "\n");
 
