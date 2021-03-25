@@ -16,4 +16,11 @@ These are the possible commands:
 * list "[catalog]"  
 * load "[catalog in which to load]" "[path to catalog to load]"  
 * save "[catalog to save]" "[path]"  
-* play "[catalog]" "[item index]"
+* play "[catalog]" "[item index]"  
+  
+# Bonus  
+  
+I chose constraint programming using [Choco solver](https://choco-solver.org/) to solve the COL problem.  
+My implementation doesn't always provide the best solution, and doesn't work for big instances.  
+The info command doesn't work when ran from the jar because of dependencies, I tried both integrating the dependencies in the jar
+and link them through the manifest using the Intellij GUI, but neither worked.
