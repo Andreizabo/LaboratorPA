@@ -70,6 +70,7 @@ public class DrawingPanel extends FlowPane {
     private void drawPolygon(double x, double y) {
         int edges = frame.configPanel.getEdges();
         RegularPolygon polygon = new RegularPolygon((int)x, (int)y, frame.configPanel.getRadius(), edges);
+        polygon.rotate(frame.configPanel.getRotation());
         double[] xs = new double[edges];
         double[] ys = new double[edges];
         for(int i = 0; i < edges; ++i) {

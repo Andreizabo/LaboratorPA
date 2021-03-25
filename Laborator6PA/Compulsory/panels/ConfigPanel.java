@@ -18,6 +18,8 @@ public class ConfigPanel extends GridPane {
     private Label edgesLabel;
     private Spinner<Integer> edgePicker;
     private Label shapeLabel;
+    private Label rotatorLabel;
+    private Spinner<Integer> rotator;
     private ObservableList<String> shapeList;
     private ComboBox shapes;
 
@@ -78,6 +80,9 @@ public class ConfigPanel extends GridPane {
         edgesLabel = new Label("Number of edges");
         edgePicker = new Spinner<>(3, 10, 3, 1);
         edgePicker.setEditable(true);
+        rotatorLabel = new Label("Rotation");
+        rotator = new Spinner<>(0, 360, 0, 15);
+        rotator.setEditable(true);
 
 
         this.add(colorLabel, 1, 0);
@@ -86,10 +91,12 @@ public class ConfigPanel extends GridPane {
         this.add(radiusPicker, 2, 1);
         this.add(edgesLabel, 3, 0);
         this.add(edgePicker, 3, 1);
+        this.add(rotatorLabel, 4, 0);
+        this.add(rotator, 4, 1);
 
         ColumnConstraints column = new ColumnConstraints();
-        column.setPercentWidth(25);
-        this.getColumnConstraints().addAll(column, column, column, column);
+        column.setPercentWidth(20);
+        this.getColumnConstraints().addAll(column, column, column, column, column);
     }
 
     public Color getColor() {
@@ -106,5 +113,9 @@ public class ConfigPanel extends GridPane {
 
     public String getSelectedShape() {
         return (String) shapes.getValue();
+    }
+
+    public Integer getRotation() {
+        return rotator.getValue();
     }
 }
