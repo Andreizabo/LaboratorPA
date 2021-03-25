@@ -11,10 +11,12 @@ public class GraphicsMain extends Application {
     @Override
     public void start(Stage stage) {
         BorderPane mainPane = new MainFrame(stage);
+        stage.setMinHeight(640);
+        stage.setMinWidth(540);
 
-        Scene scene = new Scene(mainPane, 512, 600);
+        Scene scene = new Scene(mainPane, 500, 600);
 
-        stage.setTitle("Shape drawer");
+        stage.setTitle("Circle drawer");
         stage.setScene(scene);
         stage.show();
     }
