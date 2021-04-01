@@ -2,12 +2,14 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Polygon extends DrawableObject {
-    private ArrayList<Point> points;
+    private List<Point> points;
     private double[] xs, ys;
     private int sides;
     private int rotated;
+    private boolean freeDrawn;
 
     public Polygon(Color colour, double startX, double startY, double radius, int sides, int rotation, Color strokeColor, int strokeWidth) {
         super(colour, strokeColor, startX, startY, radius, strokeWidth);
@@ -22,6 +24,7 @@ public class Polygon extends DrawableObject {
         }
         generateXY();
         rotate(rotation);
+        freeDrawn = false;
     }
 
     public Polygon(Color colour, double startX, double startY, double radius, int sides, int rotation) {
@@ -37,21 +40,32 @@ public class Polygon extends DrawableObject {
         }
         generateXY();
         rotate(rotation);
+        freeDrawn = false;
     }
 
-    public Polygon(Color colour, double startX, double startY, double radius, ArrayList<Point> points) {
+    public Polygon(Color colour, double startX, double startY, double radius, List<Point> points, Color strokeColor, int strokeWidth) {
+        super(colour, strokeColor, startX, startY, radius, strokeWidth);
+        this.rotated = 0;
+        this.points = points;
+        this.sides = points.size();
+        generateXY();
+        freeDrawn = true;
+    }
+
+    public Polygon(Color colour, double startX, double startY, double radius, List<Point> points) {
         super(colour, startX, startY, radius);
         this.rotated = 0;
         this.points = points;
         this.sides = points.size();
         generateXY();
+        freeDrawn = true;
     }
 
-    public ArrayList<Point> getPoints() {
+    public List<Point> getPoints() {
         return points;
     }
 
-    public void setPoints(ArrayList<Point> points) {
+    public void setPoints(List<Point> points) {
         this.points = points;
     }
 
@@ -126,6 +140,9 @@ public class Polygon extends DrawableObject {
         if(x < this.getStartX() - getRadius() || y < this.getStartY() - getRadius() || x > this.getStartX() + getRadius() || y > this.getStartY() + getRadius()) {
             return false;
         }
+        if(freeDrawn) {
+            return slowContains(x, y);
+        }
         Point p = new Point(x, y);
         int indexOfEdgesLeft = -1;
         int indexOfEdgesRight = -1;
@@ -163,5 +180,23 @@ public class Polygon extends DrawableObject {
             return (!MathUtils.intersect(p, new Point(this.getStartX() - getRadius(), p.getY()), points.get(indexOfEdgesRight), points.get((indexOfEdgesRight + 1) % sides)) &&
                     MathUtils.intersect(p, new Point(this.getStartX() - getRadius(), p.getY()), points.get(indexOfEdgesLeft), points.get((indexOfEdgesLeft + 1) % sides)));
         }
+    }
+
+    private boolean slowContains(double x, double y) {
+        Point point = new Point(x, y);
+        Point extreme = new Point((x < this.getStartX() ? DrawingPanel.WIDTH : 0), y);
+        int side = 0, count = 0;
+        do {
+            int next = (side + 1) % sides;
+            if(MathUtils.intersect(points.get(side), points.get(next), point, extreme)) {
+                if(MathUtils.pointsOrientation(points.get(side), point, points.get(next)) == 0) {
+                    return MathUtils.isPointOnLine(point, points.get(side), points.get(next));
+                }
+                ++count;
+            }
+            side = next;
+        } while (side != 0);
+
+        return count % 2 == 1;
     }
 }

@@ -20,16 +20,17 @@ public class ConfigPanel extends GridPane {
     private Label strokeColorLabel;
     private Spinner<Integer> strokePicker;
     private Label strokeLabel;
-    //For polygons
+    //For polygons and free draw
     private Label edgesLabel;
     private Spinner<Integer> edgePicker;
-    private Label shapeLabel;
+    //For polygons
     private Label rotatorLabel;
     private Spinner<Integer> rotator;
-    private ObservableList<String> shapeList;
     //For eraser
     private static Label shapeNo;
     //For all
+    private Label shapeLabel;
+    private ObservableList<String> shapeList;
     private ComboBox shapes;
 
     public ConfigPanel(MainFrame frame) {
@@ -145,15 +146,20 @@ public class ConfigPanel extends GridPane {
         radiusLabel = new Label("Size picker");
         radiusPicker = new Spinner<>(1, 250, 25, 1);
         radiusPicker.setEditable(true);
+        edgesLabel = new Label("Max edges");
+        edgePicker = new Spinner<>(3, 500, 100, 1);
+        edgePicker.setEditable(true);
 
         this.add(colorLabel, 1, 0);
         this.add(colorPicker, 1, 1);
         this.add(radiusLabel, 2, 0);
         this.add(radiusPicker, 2, 1);
+        this.add(edgesLabel, 3, 0);
+        this.add(edgePicker, 3, 1);
 
         ColumnConstraints column = new ColumnConstraints();
-        column.setPercentWidth(33);
-        this.getColumnConstraints().addAll(column, column, column);
+        column.setPercentWidth(25);
+        this.getColumnConstraints().addAll(column, column, column, column);
     }
 
     private void initEraser() {

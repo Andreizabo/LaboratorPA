@@ -49,7 +49,7 @@ public class DrawingPanel extends FlowPane {
         });
         imageCanvas.addEventFilter(MouseEvent.MOUSE_PRESSED, mouseEvent -> {
             if(frame.configPanel.getSelectedShape().equals("Free Draw")) {
-                drawnShapes.add(new FreeDrawShape(frame.configPanel.getColor(), mouseEvent.getX(), mouseEvent.getY(), frame.configPanel.getRadius()));
+                drawnShapes.add(new FreeDrawShape(frame.configPanel.getColor(), mouseEvent.getX(), mouseEvent.getY(), frame.configPanel.getRadius(), frame.configPanel.getEdges()));
                 drawShapes();
             }
         });
