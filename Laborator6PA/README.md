@@ -27,6 +27,7 @@ The layers provide a multitude of different ways to modify the drawn shapes:
 * Any layer can be moved using (Numpad 4 -> Left) (Numpad 8 -> Up) (Numpad 6 -> Right) (Numpad 2 -> Down)  
 * Any layer besides free-drawn shapes can be resized (Numpad + -> Increase size) (Numpad - -> Decrease Size)  
 * Any layer besides free-drawn shapes can be rotated (Numpad * -> Rotate to the right) (Numpad / -> Rotate to the left)  
+  
 All of the actions listed above can be amplified by holding (Ctrl) down  
   
 The Action Logger records the last 20 actions the user has taken, and can undo/redo them:  
