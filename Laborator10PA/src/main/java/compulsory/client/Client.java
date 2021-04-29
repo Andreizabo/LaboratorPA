@@ -9,7 +9,7 @@ import java.net.UnknownHostException;
 
 public class Client {
     private String address = "127.0.0.1";
-    private int port = 8100;
+    private int port = 8081;
     private Socket socket;
 
     public Client(String address, int port) {
@@ -22,6 +22,7 @@ public class Client {
     public void connect() throws IOException {
         try {
             socket = new Socket(address, port);
+            System.out.println("Connected");
         }
         catch (UnknownHostException e) {
             System.err.println(e.getMessage());

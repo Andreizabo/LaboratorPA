@@ -17,6 +17,9 @@ public class Main {
                 }
 
                 System.out.println(client.sendMessage(string));
+
+                if (string.toLowerCase().equals("stop"))
+                    break;
             }
             client.disconnect();
         }
