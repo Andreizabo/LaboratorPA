@@ -1,11 +1,19 @@
 package compulsory.server;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class Main
 {
-    public static void main(String[] args) throws IOException
+    public static void main(String[] args)
     {
-        Server server = new Server();
+        try
+        {
+            Server server = new Server();
+        }
+        catch (IOException | SQLException e)
+        {
+            System.err.println(e.getMessage());
+        }
     }
 }
