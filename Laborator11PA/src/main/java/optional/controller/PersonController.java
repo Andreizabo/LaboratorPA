@@ -20,15 +20,15 @@ public class PersonController
     @PostMapping("/")
     ResponseEntity<Person> createPerson(@RequestBody Person person)
     {
-        if (person.getId() != null && personRepository.findById(person.getId()).isPresent())
+        if (person.getName() != null && personRepository.findById(person.getName()).isPresent())
         {
             return ResponseEntity.badRequest().build();
         }
 
         Person createdPerson = personRepository.save(person);
 
-        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
-                .buildAndExpand(createdPerson.getId()).toUri();
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{name}")
+                .buildAndExpand(createdPerson.getName()).toUri();
         return ResponseEntity.created(uri).body(createdPerson);
     }
 
@@ -38,10 +38,10 @@ public class PersonController
         return ResponseEntity.ok(personRepository.findAll());
     }
 
-    @GetMapping("/{id}")
-    ResponseEntity<Person> listPerson(@PathVariable Long id)
+    @GetMapping("/{name}")
+    ResponseEntity<Person> listPerson(@PathVariable String name)
     {
-        Optional<Person> personOpt = personRepository.findById(id);
+        Optional<Person> personOpt = personRepository.findById(name);
         if (personOpt.isEmpty())
         {
             return ResponseEntity.notFound().build();
@@ -49,32 +49,41 @@ public class PersonController
         return ResponseEntity.ok(personOpt.get());
     }
 
-    @PutMapping("/{id}")
-    ResponseEntity<Person> updatePerson(@PathVariable Long id, @RequestBody Person person)
+    @PutMapping("/{name}")
+    ResponseEntity<Person> updatePerson(@PathVariable String name, @RequestBody Person person)
     {
-        if (person.getId() != null && !id.equals(person.getId()))
+        if (person.getName() != null && !name.equals(person.getName()))
         {
             return ResponseEntity.badRequest().build();
         }
 
-        if (person.getId() == null)
+        if (person.getName() == null)
         {
-            person.setId(id);
+            person.setName(name);
         }
 
         Person updatedPerson = personRepository.save(person);
         return ResponseEntity.ok(updatedPerson);
     }
 
-    @DeleteMapping("/{id}")
-    ResponseEntity<Person> deletePerson(@PathVariable Long id)
+    @DeleteMapping("/{name}")
+    ResponseEntity<Person> deletePerson(@PathVariable String name)
     {
-        if (personRepository.findById(id).isEmpty())
+        var personOpt = personRepository.findById(name);
+        if (personOpt.isEmpty())
         {
             return ResponseEntity.notFound().build();
         }
 
-        personRepository.deleteById(id);
+        var person = personOpt.get();
+
+        for (var friend : person.getFriends())
+            friend.getFriendsOf().remove(person);
+
+        for (var friend : person.getFriendsOf())
+            friend.getFriends().remove(person);
+
+        personRepository.deleteById(name);
 
         return ResponseEntity.noContent().build();
     }

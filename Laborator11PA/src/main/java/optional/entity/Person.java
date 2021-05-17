@@ -10,9 +10,6 @@ import java.util.Set;
 public class Person
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    Long id;
-
     String name;
 
     @ManyToMany
@@ -22,16 +19,6 @@ public class Person
     @ManyToMany(mappedBy = "friends")
     @JsonIgnore
     Set<Person> friendsOf = new HashSet<>();
-
-    public Long getId()
-    {
-        return id;
-    }
-
-    public void setId(Long id)
-    {
-        this.id = id;
-    }
 
     public String getName()
     {

@@ -16,16 +16,16 @@ public class FriendsController
     private PersonRepository personRepository;
 
     @PostMapping("/")
-    ResponseEntity<String> createFriends(@RequestBody Map<String, Long> friendsJson)
+    ResponseEntity<String> createFriends(@RequestBody Map<String, String> friendsJson)
     {
-        Long id1 = friendsJson.get("id1");
-        Long id2 = friendsJson.get("id2");
+        String name1 = friendsJson.get("name1");
+        String name2 = friendsJson.get("name2");
 
-        if (id1 == null || id2 == null)
+        if (name1 == null || name2 == null)
             return ResponseEntity.badRequest().build();
 
-        var personOpt1 = personRepository.findById(id1);
-        var personOpt2 = personRepository.findById(id2);
+        var personOpt1 = personRepository.findById(name1);
+        var personOpt2 = personRepository.findById(name2);
 
         if (personOpt1.isEmpty() || personOpt2.isEmpty())
             return ResponseEntity.notFound().build();
@@ -42,10 +42,10 @@ public class FriendsController
         return ResponseEntity.ok("Friendship created");
     }
 
-    @GetMapping("/{id}")
-    ResponseEntity<Iterable<Person>> listAllUserFriends(@PathVariable Long id)
+    @GetMapping("/{name}")
+    ResponseEntity<Iterable<Person>> listAllUserFriends(@PathVariable String name)
     {
-        var personOpt = personRepository.findById(id);
+        var personOpt = personRepository.findById(name);
         if (personOpt.isEmpty())
             return ResponseEntity.notFound().build();
 
@@ -98,4 +98,10 @@ public class FriendsController
         allPersons.sort(Comparator.comparingInt(Person::getFriendsNum));
         return allPersons;
     }
+
+//    @GetMapping("/important")
+//    ResponseEntity<Iterable<Person>> listImportantUsers()
+//    {
+//
+//    }
 }
