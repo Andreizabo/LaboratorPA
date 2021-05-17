@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e8fa811-7909-46e0-b0a5-659e33b155f1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/optionalIntegration/commands/CommandFriend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optionalIntegration/commands/CommandFriend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/optionalIntegration/commands/CommandLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optionalIntegration/commands/CommandLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/optionalIntegration/commands/CommandRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optionalIntegration/commands/CommandRegister.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/optionalIntegration/server/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optionalIntegration/server/ClientThread.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/optionalIntegration/commands/CommandRegister$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/optionalIntegration/commands/CommandRegister.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/optionalIntegration/commands/CommandRegister.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +105,7 @@
       <updated>1620896734005</updated>
       <workItem from="1620896735199" duration="623000" />
       <workItem from="1621243973958" duration="3613000" />
-      <workItem from="1621256353370" duration="2787000" />
+      <workItem from="1621256353370" duration="3171000" />
     </task>
     <servers />
   </component>
