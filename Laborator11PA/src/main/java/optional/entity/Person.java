@@ -3,6 +3,7 @@ package optional.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -16,11 +17,11 @@ public class Person
 
     @ManyToMany
     @JsonIgnore
-    Set<Person> friends;
+    Set<Person> friends = new HashSet<>();
 
     @ManyToMany(mappedBy = "friends")
     @JsonIgnore
-    Set<Person> friendsOf;
+    Set<Person> friendsOf = new HashSet<>();
 
     public Long getId()
     {
