@@ -1,5 +1,13 @@
 package optionalIntegration.commands;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -13,20 +21,16 @@ public class CommandLogin implements Command {
 
     @Override
     public String run() {
-//        try {
-//            Statement statement = conn.createStatement();
-//            ResultSet set = statement.executeQuery("SELECT COUNT(*) FROM NETWORK_USERS WHERE nume = '" + name + "'");
-//            set.next();
-//            if(set.getInt("COUNT(*)") != 1) {
-//                set.close();
-//                return "not_exist";
-//            }
-//            set.close();
-//            return "succ";
-//        }
-//        catch (SQLException e) {
-//            return "exception";
-//        }
-        return "a";
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        ResponseEntity<String> response = restTemplate.getForEntity(uri + name, String.class);
+
+        if(response.getStatusCode().is2xxSuccessful()) {
+            return "succ";
+        }
+        else {
+            return "exception";
+        }
     }
 }

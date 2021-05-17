@@ -11,8 +11,6 @@ import org.springframework.web.client.RestTemplate;
 public class CommandRegister implements Command {
 
     private String name;
-    final Logger log = LoggerFactory.getLogger(CommandRegister.class);
-    final String uri = "http://localhost:8082/person/";
 
     public CommandRegister(String name) {
         this.name = name;
@@ -24,7 +22,7 @@ public class CommandRegister implements Command {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<String> request = new HttpEntity<>("{ \"name\": \"vladislavus\" }", headers);
+        HttpEntity<String> request = new HttpEntity<>("{ \"name\": \"" + name + "\" }", headers);
         ResponseEntity<String> response = restTemplate.postForEntity(uri, request, String.class);
         return "succ";
     }

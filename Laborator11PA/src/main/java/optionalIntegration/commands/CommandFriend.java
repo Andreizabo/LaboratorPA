@@ -1,5 +1,13 @@
 package optionalIntegration.commands;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.client.RestTemplate;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,35 +23,17 @@ public class CommandFriend implements Command {
 
     @Override
     public String run() {
-//        try {
-//            Statement statement = conn.createStatement();
-//            ResultSet set = statement.executeQuery("SELECT COUNT(*) FROM NETWORK_RELATIONS WHERE nume_1 = '" + friend1 + "' AND nume_2 = '" + friend2 + "'");
-//            set.next();
-//            if(set.getInt("COUNT(*)") > 0) {
-//                set.close();
-//                return "already";
-//            }
-//            set.close();
-//
-//            statement = conn.createStatement();
-//            set = statement.executeQuery(
-//                    "INSERT INTO NETWORK_RELATIONS VALUES(" + "'" + friend1 + "', '" + friend2 + "')"
-//            );
-//            set.close();
-//            statement.close();
-//
-//            statement = conn.createStatement();
-//            set = statement.executeQuery(
-//                    "INSERT INTO NETWORK_RELATIONS VALUES(" + "'" + friend2 + "', '" + friend1 + "')"
-//            );
-//            set.close();
-//            statement.close();
-//
-//            return "succ";
-//        }
-//        catch (SQLException e) {
-//            return "exception";
-//        }
-        return "a";
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> request = new HttpEntity<>("{ \"name1\": \"" + friend1 + "\", \"name2\": \"" + friend2 +"\" }", headers);
+        ResponseEntity<String> response = restTemplate.postForEntity(uri, request, String.class);
+
+        if(response.getStatusCode().is2xxSuccessful()) {
+            return "succ";
+        }
+        else {
+            return "exception";
+        }
     }
 }

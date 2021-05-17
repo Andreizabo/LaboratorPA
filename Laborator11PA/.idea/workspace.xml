@@ -5,32 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e8fa811-7909-46e0-b0a5-659e33b155f1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../Laborator10PA/src/main/java/lab11opt/client/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Laborator10PA/src/main/java/lab11opt/client/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Laborator10PA/src/main/java/lab11opt/commands/Command.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Laborator10PA/src/main/java/lab11opt/commands/CommandFriend.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Laborator10PA/src/main/java/lab11opt/commands/CommandLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Laborator10PA/src/main/java/lab11opt/commands/CommandRead.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Laborator10PA/src/main/java/lab11opt/commands/CommandRegister.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Laborator10PA/src/main/java/lab11opt/commands/CommandSend.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Laborator10PA/src/main/java/lab11opt/server/ClientThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Laborator10PA/src/main/java/lab11opt/server/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../Laborator10PA/src/main/java/lab11opt/server/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/optionalIntegration/client/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/optionalIntegration/client/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/optionalIntegration/commands/Command.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/optionalIntegration/commands/CommandFriend.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/optionalIntegration/commands/CommandLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/optionalIntegration/commands/CommandRead.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/optionalIntegration/commands/CommandRegister.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/optionalIntegration/commands/CommandSend.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/optionalIntegration/server/ClientThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/optionalIntegration/server/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/optionalIntegration/server/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Laborator10PA/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Laborator10PA/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/compulsory/entity/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/compulsory/entity/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/optionalIntegration/commands/CommandFriend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optionalIntegration/commands/CommandFriend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/optionalIntegration/commands/CommandLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optionalIntegration/commands/CommandLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/optionalIntegration/commands/CommandRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optionalIntegration/commands/CommandRegister.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/optionalIntegration/server/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optionalIntegration/server/ClientThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/optionalIntegration/commands/CommandRegister$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/optionalIntegration/commands/CommandRegister.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/optionalIntegration/commands/CommandRegister.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +39,9 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/optionalIntegration" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
@@ -65,7 +49,7 @@
       <recent name="C:\Users\zaboz\IdeaProjects\LaboratorPA\Laborator11PA\src\main\java\optionalIntegration" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.CompulsoryApplication">
+  <component name="RunManager" selected="Application.Main (1)">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="optionalIntegration.client.Main" />
       <module name="Laborator11PA" />
@@ -127,7 +111,7 @@
       <updated>1620896734005</updated>
       <workItem from="1620896735199" duration="623000" />
       <workItem from="1621243973958" duration="3613000" />
-      <workItem from="1621256353370" duration="820000" />
+      <workItem from="1621256353370" duration="2787000" />
     </task>
     <servers />
   </component>
@@ -145,16 +129,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/optionalIntegration/commands/CommandRegister.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

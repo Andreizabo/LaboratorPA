@@ -119,33 +119,6 @@ public class ClientThread extends Thread
                     }
                 }
                 return res.toString().replace("\n", "/socketNewLine/");
-            case "send":
-                StringBuilder text = new StringBuilder();
-                for(int i = 2; i < command.length - 1; ++i)
-                {
-                    text.append(command[i]).append(" ");
-                }
-                com = new CommandSend(command[command.length - 1], command[1], text.toString().trim());
-                result = com.run();
-                if(result.equals("succ"))
-                {
-                    return "Message sent";
-                }
-                else
-                {
-                    return "Message not sent";
-                }
-            case "read":
-                com = new CommandRead(command[1]);
-                result = com.run();
-                if(result.equals("exception"))
-                {
-                    return "Could not read messages";
-                }
-                else
-                {
-                    return result.replace("\n", "/socketNewLine/");
-                }
             default:
                 System.err.println("Command not recognized");
                 return "Command not recognized";
