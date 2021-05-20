@@ -59,6 +59,31 @@ public class FriendsController
         return ResponseEntity.ok(result);
     }
 
+    @DeleteMapping("/{name1}/{name2}")
+    ResponseEntity<String> deletePerson(@PathVariable String name1, @PathVariable String name2)
+    {
+        var personOpt1 = personRepository.findById(name1);
+        var personOpt2 = personRepository.findById(name2);
+
+        if (personOpt1.isEmpty() || personOpt2.isEmpty())
+            return ResponseEntity.notFound().build();
+
+        var person1 = personOpt1.get();
+        var person2 = personOpt2.get();
+
+        if(!person1.getFriends().contains(person2)) {
+            return ResponseEntity.notFound().build();
+        }
+
+        person1.getFriends().remove(person2);
+        person2.getFriendsOf().remove(person1);
+
+        personRepository.save(person1);
+        personRepository.save(person2);
+
+        return ResponseEntity.noContent().build();
+    }
+
     @GetMapping("/least/{k}")
     ResponseEntity<Iterable<Person>> listLeastConnectedUsers(@PathVariable Integer k)
     {

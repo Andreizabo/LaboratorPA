@@ -24,7 +24,7 @@ public class CommandLogin implements Command {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        ResponseEntity<String> response = restTemplate.getForEntity(uri + name, String.class);
+        ResponseEntity<String> response = restTemplate.getForEntity(uri + name + "/", String.class);
 
         if(response.getStatusCode().is2xxSuccessful()) {
             return "succ";

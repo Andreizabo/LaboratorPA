@@ -5,7 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5e8fa811-7909-46e0-b0a5-659e33b155f1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/optionalIntegration/commands/CommandFriend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optionalIntegration/commands/CommandFriend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/optional/controller/FriendsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optional/controller/FriendsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/optional/controller/PersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optional/controller/PersonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/optionalIntegration/commands/CommandLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/optionalIntegration/commands/CommandLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/optional/controller/FriendsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/optional/controller/FriendsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/optional/controller/PersonController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/optional/controller/PersonController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/optional/entity/Person.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/optional/entity/Person.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/optional/repository/PersonRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/optional/repository/PersonRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/optionalIntegration/commands/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/optionalIntegration/commands/Command.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/optionalIntegration/commands/CommandFriend.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/optionalIntegration/commands/CommandFriend.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/optionalIntegration/commands/CommandLogin.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/optionalIntegration/commands/CommandLogin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/optionalIntegration/commands/CommandRead.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/optionalIntegration/commands/CommandRegister.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/optionalIntegration/commands/CommandRegister.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/optionalIntegration/commands/CommandSend.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/optionalIntegration/server/ClientThread.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/optionalIntegration/server/ClientThread.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +57,7 @@
       <recent name="C:\Users\zaboz\IdeaProjects\LaboratorPA\Laborator11PA\src\main\java\optionalIntegration" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main (1)">
+  <component name="RunManager" selected="Spring Boot.OptionalApplication">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="optionalIntegration.client.Main" />
       <module name="Laborator11PA" />
@@ -88,8 +102,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="OptionalApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="Laborator11PA" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="optional.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="optional.OptionalApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Spring Boot.OptionalApplication" />
         <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main" />
       </list>
@@ -105,7 +133,9 @@
       <updated>1620896734005</updated>
       <workItem from="1620896735199" duration="623000" />
       <workItem from="1621243973958" duration="3613000" />
-      <workItem from="1621256353370" duration="3171000" />
+      <workItem from="1621256353370" duration="4289000" />
+      <workItem from="1621320968552" duration="422000" />
+      <workItem from="1621492460968" duration="3586000" />
     </task>
     <servers />
   </component>
