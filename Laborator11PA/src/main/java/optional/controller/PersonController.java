@@ -52,14 +52,9 @@ public class PersonController
     @PutMapping("/{name}")
     ResponseEntity<Person> updatePerson(@PathVariable String name, @RequestBody Person person)
     {
-        if (person.getName() != null && !name.equals(person.getName()))
-        {
-            return ResponseEntity.badRequest().build();
-        }
-
         if (person.getName() == null)
         {
-            person.setName(name);
+            return ResponseEntity.badRequest().build();
         }
 
         Person updatedPerson = personRepository.save(person);

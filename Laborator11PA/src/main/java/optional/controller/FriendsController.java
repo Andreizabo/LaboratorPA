@@ -2,11 +2,14 @@ package optional.controller;
 
 import optional.entity.Person;
 import optional.repository.PersonRepository;
+import optional.util.Graph;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("friends")
@@ -99,9 +102,17 @@ public class FriendsController
         return allPersons;
     }
 
-//    @GetMapping("/important")
-//    ResponseEntity<Iterable<Person>> listImportantUsers()
-//    {
-//
-//    }
+    @GetMapping("/important")
+    ResponseEntity<Iterable<Person>> listImportantUsers()
+    {
+        var allPersons = personRepository.findAll();
+        int n = ((Collection<?>) allPersons).size();
+
+        var graph = new Graph(allPersons, n);
+        var cutVertices = graph.getCutVertices();
+        List<Person> result = new ArrayList<>();
+        for (var vertex : cutVertices)
+            result.add(personRepository.findById(vertex).get());
+        return ResponseEntity.ok(result);
+    }
 }
